@@ -66,8 +66,8 @@ stopClick.addEventListener("click", () => {
 let interval;
 let currentRow = 0;
 function generateCirclePyramid() {
-    const rows = input.value
-    const delayTime = delayInput.value * 100
+    const rows = parseInt(input.value)
+    const delayTime = parseInt(delayInput.value )* 100
 
 
     interval = setInterval(() => {
