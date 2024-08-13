@@ -1,4 +1,3 @@
-
 const Obj = {
     row: "Enter the rows:",
     buttons: [
@@ -46,12 +45,38 @@ const circle = document.createElement("div");
 circle.className = "circle";
 container.appendChild(circle);
 
+const radioButtons = document.querySelectorAll(".radio-group input[type='radio']");
+let color = 'transparent';
+
+function updateSelectedColor() {
+    radioButtons.forEach(radio => {
+        if (radio.checked) {
+            color = radio.value;
+        }
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    radioButtons.forEach(radio => {
+        radio.checked = false;
+    });
+
+    color = 'transparent';
+});
+
+radioButtons.forEach(radio => {
+    radio.addEventListener('change', updateSelectedColor);
+});
 
 
 const startClick = document.querySelector(".start");
 const stopClick = document.querySelector(".stop");
 
+let interval;
+let currentRow = 0;
+
 startClick.addEventListener("click", () => {
+    updateSelectedColor(); 
     if (interval) {
         clearInterval(interval);
     }
@@ -63,12 +88,9 @@ stopClick.addEventListener("click", () => {
     clearInterval(interval);
 });
 
-let interval;
-let currentRow = 0;
 function generateCirclePyramid() {
-    const rows = parseInt(input.value)
-    const delayTime = parseInt(delayInput.value )* 100
-
+    const rows = parseInt(input.value, 10);
+    const delayTime = parseInt(delayInput.value, 10) * 100; 
 
     interval = setInterval(() => {
         let output = '';
@@ -86,7 +108,7 @@ function generateCirclePyramid() {
         const rowsEl = document.querySelectorAll('.row');
         rowsEl.forEach((rowElement, Index) => {
             rowElement.querySelectorAll('.circle-item').forEach(circle => {
-                circle.style.backgroundColor = Index === currentRow ? 'blue': 'transperant';
+                circle.style.backgroundColor = Index === currentRow ? color : 'transparent'; 
             });
         });
 
