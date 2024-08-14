@@ -16,7 +16,8 @@ body{
     justify-content: center;
 }
 .container {
-    width: 800px;
+   min-width: 800px;
+   max-width: max-content;
     height:90%;
     align-items: center;
     display: flex;
@@ -28,7 +29,8 @@ body{
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiDf-czjEw6TYzfy8fT5WMBkmdNozQhNmjlw&s);
 background-repeat: no-repeat;
 background-size: cover;
-
+padding-right: 20px;
+padding-left: 20px;
 }
 .row-input {
     padding: 20px;
@@ -119,9 +121,10 @@ border: 1px solid;
 .circle{
     background-color: pink;
     margin-top: 50px;
-    width: 500px;
+    width: max-content;
     border-radius: 10px;
     padding: 20px;
+   
 }
 
 .radio-group{
